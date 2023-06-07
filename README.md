@@ -1,4 +1,4 @@
-Set of Python files for Pimoroni's BADGER2049w to turn it into an infomration sink:
+Set of Python files for Pimoroni's BADGER2040w to turn it into an information sink and display 3 sets of pages:
 - A set of pages (tabs) to display local weather and forecast 
 - A set of pages (tabs) to display astronomical information
 - A set of pages (tabs) to display local information retrieved from other local servers
@@ -6,8 +6,9 @@ Navigation between the set of pages is done via the keys "A", "B", "C" on the ba
 
 Notes:
 - Due to memory size limitation of the Badger, each request for a set of pages drops all functions from memory and loads the new functions on-the-fly (does not work otherwise)
-- Set the LOCATION, COUNTRY and TIMEZONE (For Europe's daylight saving time: 1 for wintertime, 2 for summertime) in common_badger.py
+- Set the LAT, LONG, LOCATION, COUNTRY and TIMEZONE (For Europe's daylight saving time: 1 for wintertime, 2 for summertime) in common_badger.py
 - Info is displayed in French if COUNTRY == 'Fr', otherwise in English
+- First pages to be displayed is Astro. To be changed in the main.py if another page should be displayed at boot time
 
 
 WEATHER:
