@@ -2,9 +2,10 @@
 # -*- coding: utf-8 -*-
 
 #---------------------------------------------------#
-#													#
-#				astro_badger.py						#
-#													#
+#                                                   #
+#                astro_badger.py                    #
+#                by N.MERCOUROFF, 2023              #
+#                                                   #
 #---------------------------------------------------#
 
 """
@@ -21,6 +22,7 @@ Requires
 - Moon phase images in  /Phases/
 - World map in /astricons/world_map_m.jpg
 - common_badger.py library of common functions and data
+- Set LOCATION, COUNTRY and TIMEZONE in common_badger.py
 
 """
 
