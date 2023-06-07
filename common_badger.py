@@ -1,4 +1,18 @@
-# Common badger functions
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
+#---------------------------------------------------#
+#                                                   #
+#                common_badger.py                   #
+#                by N.MERCOUROFF, 2023              #
+#                                                   #
+#---------------------------------------------------#
+
+"""
+Common functions and data for the Python script to grab data and displays them on Badger 2040 
+Set LAT, LONG, LOCATION, COUNTRY and TIMEZONE 
+
+"""
 
 import badger2040w as badger2040
 import urequests
