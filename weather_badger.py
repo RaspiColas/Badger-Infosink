@@ -20,7 +20,7 @@ Requires
 - Wind direction images in /windir/
 - common_badger.py library of common functions and data
 - Fill up OPENWEATHER_ID
-- Set LOCATION, COUNTRY and TIMEZONE in common_badger.py
+- Set LAT, LONG, LOCATION, COUNTRY and TIMEZONE in common_badger.py
 
 """
 
