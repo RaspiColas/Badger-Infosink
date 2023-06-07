@@ -2,9 +2,10 @@
 # -*- coding: utf-8 -*-
 
 #---------------------------------------------------#
-#													#
-#				weather_badger.py					#
-#													#
+#                                                   #
+#                weather_badger.py                  #
+#                by N.MERCOUROFF, 2023              #
+#                                                   #
 #---------------------------------------------------#
 
 """
@@ -19,6 +20,7 @@ Requires
 - Wind direction images in /windir/
 - common_badger.py library of common functions and data
 - Fill up OPENWEATHER_ID
+- Set LOCATION, COUNTRY and TIMEZONE in common_badger.py
 
 """
 
