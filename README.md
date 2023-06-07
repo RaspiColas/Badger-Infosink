@@ -1,3 +1,5 @@
+# Badger-Infosink
+
 Set of Python files for Pimoroni's BADGER2040w to turn it into an information sink and display 3 sets of pages:
 - A set of pages (tabs) to display local weather and forecast 
 - A set of pages (tabs) to display astronomical information
