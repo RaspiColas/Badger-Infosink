@@ -4,7 +4,10 @@ Set of Python files for Pimoroni's BADGER2049w to turn it into an infomration si
 - A set of pages (tabs) to display local information retrieved from other local servers
 Navigation between the set of pages is done via the keys "A", "B", "C" on the badger. Navigation between the tabs is done via the keys UP and DOWN
 
-Due to memory size limitation of the Badger, each request for a set of pages drops all functions from memory and loads the new functions on-the-fly (does not work otherwise)
+Notes:
+- Due to memory size limitation of the Badger, each request for a set of pages drops all functions from memory and loads the new functions on-the-fly (does not work otherwise)
+- Set the LOCATION, COUNTRY and TIMEZONE (For Europe's daylight saving time: 1 for wintertime, 2 for summertime) in common_badger.py
+- Info is displayed in French if COUNTRY == 'Fr', otherwise in English
 
 
 WEATHER:
