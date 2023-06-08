@@ -26,6 +26,7 @@ Requires
 - Wind direction images in /windir/
 - common_badger.py library of common functions and data
 - Fill up OPENWEATHER_ID in the script
+- Set LAT, LONG, LOCATION, COUNTRY and TIMEZONE in common_badger.py
 
 
 ASTRO:
