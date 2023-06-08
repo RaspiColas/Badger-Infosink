@@ -138,24 +138,42 @@ def read_astro(text):
         if not text_line or text_line[0] == '#':
             continue
         body_ephem = text_line.split(',')
+        body = body_ephem[0]
 
         if COUNTRY == 'Fr':
-            body_name = body_list_fr[body_ephem[0].strip()]
+            body_name = body_list_fr[body.strip()]
         else:
-            body_name = body_ephem[0].strip()
+            body_name = body.strip()
 
-        ephem_data[body_ephem[0]] = {
-            'body': body_name,
-            'date': body_ephem[1].strip(),
-            'rise': body_ephem[2].strip(),
-            'az_rise': body_ephem[3].strip(),
-            'trans': body_ephem[4].strip(),
-            'elev': body_ephem[5].strip(),
-            'set': body_ephem[6].strip(),
-            'az_set': body_ephem[7].strip()
-        }
-        print_debug("%s@%s: %s@%s, %s@%s, %s@%s" %
-                (body_ephem[0], body_ephem[1], body_ephem[2], body_ephem[3], body_ephem[4], body_ephem[5], body_ephem[6], body_ephem[7]))
+        try:    # If data already exists for body, keep only the most relevant ones
+            if ephem_data[body]['rise'] == '-':
+                ephem_data[body]['rise'] = body_ephem[2].strip()
+            if ephem_data[body]['trans'] == '-':
+                ephem_data[body]['trans'] = body_ephem[4].strip()
+            if ephem_data[body]['set'] == '-':
+                ephem_data[body]['set'] = body_ephem[6].strip()
+        except:
+            ephem_data[body] = {
+                'body': body_name,
+                'date': body_ephem[1].strip(),
+                'rise': body_ephem[2].strip(),
+                'az_rise': body_ephem[3].strip(),
+                'trans': body_ephem[4].strip(),
+                'elev': body_ephem[5].strip(),
+                'set': body_ephem[6].strip(),
+                'az_set': body_ephem[7].strip()
+            }
+
+        print_debug("%s@%s: %s@%s, %s@%s, %s@%s" %(
+            ephem_data[body]['body'], 
+            ephem_data[body]['date'], 
+            ephem_data[body]['rise'], 
+            ephem_data[body]['az_rise'],
+            ephem_data[body]['trans'],
+            ephem_data[body]['elev'],
+            ephem_data[body]['set'],
+            ephem_data[body]['az_set']))
+        
     return
 
 
