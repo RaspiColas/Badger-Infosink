@@ -110,8 +110,6 @@ def currenttime():
         "time_hm": time_hm,
         "wd": wd
     }
-    print("current: ")
-    print(current)
     return
 
 
