@@ -1,8 +1,9 @@
 # Badger-Infosink
 
 Project description:
-- [En]: https://raspicolas.wordpress.com/2023/06/07/turning-a-raspberry-pico-into-an-infosink-display/
-- [Fr]: https://www.framboise314.fr/comment-transformer-un-raspberry-pico-en-centrale-dinformation-pour-sa-cuisine/
+- [In En](https://raspicolas.wordpress.com/2023/06/07/turning-a-raspberry-pico-into-an-infosink-display/)
+- [In Fr](https://www.framboise314.fr/comment-transformer-un-raspberry-pico-en-centrale-dinformation-pour-sa-cuisine/)
+
 
 Set of Python files for Pimoroni's BADGER2040w to turn it into an information sink and display 3 sets of pages:
 - A set of pages (tabs) to display local weather and forecast 
