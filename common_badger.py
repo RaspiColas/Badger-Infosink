@@ -14,10 +14,7 @@ Set LAT, LONG, LOCATION, COUNTRY and TIMEZONE
 
 """
 
-import badger2040w as badger2040
 import urequests
-import jpegdec
-from time import localtime
 import badger_os
 import gc
 
@@ -31,8 +28,6 @@ LOCATION = "Paris"
 COUNTRY = "Fr"
 
 TRY_NB = 2
-
-indent = 0
 
 pages = {
     "astro": "astro_badger",
@@ -53,7 +48,7 @@ else:
 
 
 #-------------------------------------------------
-#		Connection management functions
+#        Connection management functions
 #-------------------------------------------------
 
 def fetch_data_text(display, url):
@@ -93,7 +88,7 @@ def fetch_data_json(display, url):
 
 
 #-------------------------------------------------
-#		Memory management functions
+#        Memory management functions
 #-------------------------------------------------
 
 def launch_pages(pages_name):
@@ -109,11 +104,12 @@ def launch_pages(pages_name):
 
 
 #-------------------------------------------------
-#		Printing functions
+#        Printing functions
 #-------------------------------------------------
 
 warning = '\033[91m'
 normal = '\033[0m'
+indent = 0
 
 def print_entry(text):
     global indent
@@ -140,7 +136,7 @@ def print_debug(text):
 
 
 #-------------------------------------------------
-#		Text functions
+#        Text functions
 #-------------------------------------------------
 
 def flush_text_right(display, text, x, y, s):
@@ -163,7 +159,7 @@ def underline_text(display, text, x, y, s):
 
 
 #-------------------------------------------------
-#		Display functions
+#        Display functions
 #-------------------------------------------------
 
 def display_status(display, text):
