@@ -27,9 +27,8 @@ Requires
 """
 
 import badger2040w as badger2040
-import urequests
 import jpegdec
-from time import localtime, sleep
+from time import localtime, time
 from ntptime import settime
 
 from common_badger import *
@@ -81,7 +80,7 @@ jpeg = jpegdec.JPEG(display.display)
 
 
 #-------------------------------------------------
-#		Astro functions
+#        Astro functions
 #-------------------------------------------------
 
 def currenttime():
@@ -102,12 +101,17 @@ def currenttime():
     date_dm = "%s/%s" % (dt[2], dt[1])
     time_hm = '{:02d}:{:02d}'.format((dt[3]+TIMEZONE)%24, dt[4])
     wd = WEEKDAYS[dt[6]]
+    dt1 = localtime(time()+56400)
+    date_ymd1 = "%s-%s-%s" % (dt1[0], dt1[1], dt1[2])
     current = {
         "date_ymd": date_ymd,
+        "date_ymd1": date_ymd1,
         "date_dm": date_dm,
         "time_hm": time_hm,
         "wd": wd
     }
+    print("current: ")
+    print(current)
     return
 
 
@@ -219,11 +223,11 @@ def get_iss_data():
 
 #----- Moon data
 
-def calculate_phase(p, d):
-    '''Calculates moon phase from the phase in degrees'''
+def calculate_phase(p, p1):
+    '''Calculates moon phase from the phase p of the day and the phase p1 of the next day '''
 
     ix = round(p / 45)
-    if d > 0:
+    if p < p1:
         return dirs_cr[ix], jpg_cr[ix]
     else:
         return dirs_dc[ix], jpg_dc[ix]
@@ -267,6 +271,27 @@ def read_moon(moon_json):
         return False
 
 
+def read_phase(moon_json):
+    '''Parses the moon data json for phase info only'''
+
+    global moon_phase1
+
+    print_entry("Parsing moon phase for D+1...")
+    if not moon_json:
+        return False
+    print_debug(moon_json)
+
+    try:
+        moon_phase1 = float(moon_json["data"][0]["phase"])
+        print_debug("PhaseD+1 = %0.0f" %(moon_phase1))
+        print_exit("...success parsing moon phase for D+1")
+        return True
+    except:
+        moon_phase1 = 0.
+        print_error("...error parsing moon phase")
+        return False
+
+
 def get_moon_data():
     '''Gets the Moon phase data'''
     
@@ -275,13 +300,16 @@ def get_moon_data():
                                 (current["date_ymd"], current["time_hm"]))
     if moon_json:
         read_moon(moon_json)
+        read_phase(fetch_data_json(display, MOON_URL %
+                                   (current["date_ymd1"], current["time_hm"])))
         print_exit("...success getting moon data")
         return True
     else:
         print_error("...error getting moon data")
         return False
 
-#----- Alla astro data
+
+#----- All astro data
 
 def get_astro_data():
     '''Get the astro data'''
@@ -300,7 +328,7 @@ def get_astro_data():
 
 
 #-------------------------------------------------
-#		Display functions
+#        Display functions
 #-------------------------------------------------
 
 #----- Ephem display
@@ -469,7 +497,7 @@ def draw_astro_tab():
 
 
 #-------------------------------------------------
-#		Main
+#        Main
 #-------------------------------------------------
 
 def astro():
